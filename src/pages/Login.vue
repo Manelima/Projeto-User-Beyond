@@ -66,7 +66,7 @@ export default {
       registerEmail: "",
       password: "",
       password2: "",
-      errorMessage: "", // Novo campo de dados
+      errorMessage: "",
     };
   },
   methods: {

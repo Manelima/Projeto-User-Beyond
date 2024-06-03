@@ -1,24 +1,12 @@
 <<<<<<< HEAD
 # Breve-Resumo
 
-Aqui eu reutilizei o escopo das aulas, 
-após alguns erros de modulos e aprender muito sobre como debbugar e como fazer o "npm run serve" voltar a rodar.
-Como estive encarregado do CRUD de Usuários, fiz da melhor maneira que pude e mesmo com alguns contra-tempos embora não tenha saído como eu esperava, estou feliz de pelo menos ter aprendido e adquirido conhecimento sobre esse Framework poderoso.
+Aqui eu reutilizei o escopo das atividades 1,2 e 3; 
+Aprendi muita coisa nessa mentoria de grande valor pra minha carreira e até pro meu portifólio, como é meu primeiro contato com JS e Vue espero
+ter conseguido atender o resultado de vocês. 
+Como estive encarregado do CRUD de Usuários, fiz da melhor maneira que pude, além de aprender muito mesmo com esta mentoria, só tenho a agradecer a beyond e ao porto por esta oportunidade.
  
 # Funcionamento do Crud de Usuários
 
-
-
-=======
-# Breve-Resumo
-
-Aqui eu reutilizei o escopo das aulas, 
-após alguns erros de modulos e aprender muito sobre como debbugar e como fazer o "npm run serve" voltar a rodar.
-Como estive encarregado do CRUD de Usuários, fiz da melhor maneira que pude e mesmo com alguns contra-tempos embora não tenha saído como eu esperava, estou feliz de pelo menos ter aprendido e adquirido conhecimento sobre esse Framework poderoso.
- 
-# Funcionamento do Crud de Usuários
-
-
-
->>>>>>> 88be1a53ca8c3e43d4057f342c24e5678e29d61e
-# 
+Além de estar hospedado no Firebase hosting, com as responses funcionando e enviando pra autenticação e afins, Existe na página de usuários
+juntamente com sua lógica em main.js a inserção dos mesmos.

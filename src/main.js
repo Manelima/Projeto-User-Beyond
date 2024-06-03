@@ -212,7 +212,7 @@ const store = new Vuex.Store({
     currentUser: (state) => state.user,
     authError: (state) => state.error,
     usuarios: (state) => state.usuarios,
-    contents: (state) => state.contents // Adicionei um novo getter para os conteúdos
+    contents: (state) => state.contents 
   }
 });
 
