@@ -46,7 +46,8 @@ const store = new Vuex.Store({
   state: {
     user: null,
     eventos: [],
-    usuarios: [] 
+    usuarios: [],
+    contents: [] // Adicionei um novo estado para os conteúdos
   },
   mutations: {
     setUser(state, payload) {
@@ -54,10 +55,13 @@ const store = new Vuex.Store({
     },
     setUsuarios(state, usuarios) {
       state.usuarios = usuarios;
+    },
+    setContents(state, contents) { // Adicionei uma nova mutation para os conteúdos
+      state.contents = contents;
     }
   },
   actions: {
-     //eslint-disable-next-line no-unused-vars
+    //eslint-disable-next-line no-unused-vars
     create({ commit }, payload) {
       const { email, password } = payload;
       if (!email || !validateEmail(email)) {
@@ -96,7 +100,7 @@ const store = new Vuex.Store({
           });
       });
     },
-     //eslint-disable-next-line no-unused-vars
+    //eslint-disable-next-line no-unused-vars
     checkAuthState({ commit }) {
       onAuthStateChanged(auth, (user) => {
         if (user) {
@@ -107,7 +111,7 @@ const store = new Vuex.Store({
         }
       });
     },
-     //eslint-disable-next-line no-unused-vars
+    //eslint-disable-next-line no-unused-vars
     async sendEvent({ commit }, payload) {
       console.log("chamada da action de sendEvent");
       const evento = payload;
@@ -121,7 +125,7 @@ const store = new Vuex.Store({
         alert(error.message);
       }
     },
-     //eslint-disable-next-line no-unused-vars
+    //eslint-disable-next-line no-unused-vars
     async deleteEvent({ commit }, payload) {
       console.log("chamada da action de deleteEvent");
       const eventoId = payload.id;
@@ -134,7 +138,7 @@ const store = new Vuex.Store({
         alert(error.message);
       }
     },
-     //eslint-disable-next-line no-unused-vars
+    //eslint-disable-next-line no-unused-vars
     async updateEvent({ commit }, payload) {
       console.log("chamada da action de updateEvent");
       const { id, ...dadosAtualizados } = payload; 
@@ -158,13 +162,57 @@ const store = new Vuex.Store({
       } catch (error) {
         console.error("Erro ao buscar usuários:", error);
       }
-    }
+    },
+    // Conteúdos do Firestore
+    //eslint-disable-next-line no-unused-vars
+    async createContent({ commit }, payload) {
+      try {
+        const docRef = await addDoc(collection(db, "contents"), payload);
+        console.log("Conteúdo criado com ID: ", docRef.id);
+      } catch (error) {
+        console.error("Erro ao criar conteúdo:", error);
+      }
+    },
+    //eslint-disable-next-line no-unused-vars
+    async fetchContents({ commit }) {
+      try {
+        const querySnapshot = await getDocs(collection(db, "contents"));
+        const contents = [];
+        querySnapshot.forEach((doc) => {
+          contents.push({ id: doc.id, ...doc.data() });
+        });
+        commit("setContents", contents);
+      } catch (error) {
+        console.error("Erro ao buscar conteúdos:", error);
+      }
+    },
+    //eslint-disable-next-line no-unused-vars
+    async updateContent({ commit }, payload) {
+      const { id, ...dadosAtualizados } = payload;
+      try {
+        await updateDoc(doc(db, "contents", id), dadosAtualizados);
+        console.log("Conteúdo atualizado com sucesso");
+      } catch (error) {
+        console.error("Erro ao atualizar conteúdo:", error);
+      }
+    },
+    //eslint-disable-next-line no-unused-vars
+    async deleteContent({ commit }, payload) {
+      const contentId = payload.id;
+      try {
+        await deleteDoc(doc(db, "contents", contentId));
+        console.log("Conteúdo deletado com ID: ", contentId);
+      } catch (error) {
+        console.error("Erro ao deletar conteúdo:", error);
+      }
+    },
   },
   getters: {
     isAuthenticated: (state) => !!state.user,
     currentUser: (state) => state.user,
     authError: (state) => state.error,
-    usuarios: (state) => state.usuarios 
+    usuarios: (state) => state.usuarios,
+    contents: (state) => state.contents // Adicionei um novo getter para os conteúdos
   }
 });
 
