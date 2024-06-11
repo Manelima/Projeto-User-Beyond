@@ -6,7 +6,7 @@ const portfinder = require('portfinder');
 const app = express();
 
 app.use(cors());
-app.use(express.json()); // para lidar com o JSON no corpo das requisições
+app.use(express.json()); 
 
 admin.initializeApp({
   credential: admin.credential.applicationDefault()

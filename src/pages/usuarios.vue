@@ -1,19 +1,21 @@
 <template>
-  <div>
-    <v-app-bar color="red lighten-1 text-center">
-      <v-toolbar-title>Seja Bem-vindo a Área de Usuários!!!</v-toolbar-title>
+  <div class="background">
+    <v-app-bar color="primary text-center">
+      <v-toolbar-title>Área de Usuários</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn @click="navegar('/')" class="mr-2">Retornar a Home</v-btn>
       <v-btn @click="navegar('/Cursos')" class="mr-2">Ir para Cursos</v-btn>
       <v-btn @click="navegar('/Calendario')" class="mr-2">Ir para Calendário</v-btn>
       <v-btn @click="navegar('/Forum')" class="mr-2">Ir para o Fórum</v-btn>
       <v-btn @click="navegar('/Biblioteca')" class="mr-2">Ir para Biblioteca</v-btn>
+      <v-btn @click="logout" class="mr-2">Sair</v-btn>
+
     </v-app-bar>
 
     <v-row display="flex" pa="2em" justify="center">
       <v-card class="pa-2 align-self-center mt-16">
         <v-btn
-          color="orange"
+          color="dark"
           dark
           v-bind="attrs"
           v-on="on"
@@ -27,7 +29,7 @@
         <v-card
           v-for="(usuario, index) in usuarios"
           :key="index"
-          class="pa-2 align-self-center mt-16"
+          class="indigo lighten-4 pa-2 align-self-center mt-6"
         >
           <v-card-text>
             <div>{{ usuario.nome }}</div>
@@ -76,9 +78,9 @@
       </v-card>
     </v-dialog>
 
-    <v-card height="400px">
+    <v-card height="86px">
       <v-footer padless fixed>
-        <v-card flat tile width="100%" class="red lighten-1 text-center">
+        <v-card flat tile width="100%" class="secondary text-center">
           <v-card-text>
             <v-btn v-for="icon in icons" :key="icon" class="mx-4" icon>
               <v-icon size="24px">{{ icon }}</v-icon>
@@ -89,7 +91,7 @@
 
           <v-card-text class="white--text">
             {{ new Date().getFullYear() }} —
-            <strong>℗ Powered by Emanuel Lima Tomaz de Aquino ℗</strong>
+            <strong>℗ Powered by Beyond Co. ℗</strong>
           </v-card-text>
         </v-card>
       </v-footer>
@@ -101,7 +103,10 @@
 //eslint-disable-next-line no-unused-vars
 import { collection, getDocs, addDoc, deleteDoc, updateDoc, doc } from "firebase/firestore";
 //eslint-disable-next-line no-unused-vars
-import { db } from "../config";
+import { db, auth } from "../config";
+//eslint-disable-next-line no-unused-vars
+import { signOut } from "firebase/auth";
+
 
 export default {
   data() {
@@ -179,6 +184,14 @@ export default {
         this.editedIndex = -1;
       }, 300);
     },
+    async logout() {
+    try {
+      await signOut(auth);
+      this.$router.push("/Login");
+    } catch (error) {
+      console.error("Erro ao sair:", error);
+    }
+  },
   },
 };
 </script>

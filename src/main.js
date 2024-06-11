@@ -26,7 +26,13 @@ Vue.config.productionTip = false;
 
 let app;
 
-onAuthStateChanged(auth, () => {
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    store.commit("setUser", user);
+  } else {
+    store.commit("setUser", null);
+  }
+
   if (!app) {
     app = new Vue({
       vuetify,

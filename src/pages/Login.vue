@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-app class="background">
     <v-app-bar app color="primary" dark>
       <v-toolbar-title>Área de autenticação</v-toolbar-title>
     </v-app-bar>
@@ -7,55 +7,60 @@
     <v-container>
       <v-row justify="center" class="mt-16">
         <v-col cols="12" md="6">
-          <v-card class="pa-4">
-            <v-card-title>Entrar</v-card-title>
-            <v-form @submit.prevent="login">
-              <v-text-field
-                v-model="loginEmail"
-                label="E-mail"
-                type="email"
-                required
-                class="mb-4"
-              ></v-text-field>
-              <v-text-field
-                v-model="password"
-                label="Senha"
-                type="password"
-                required
-                class="mb-4"
-              ></v-text-field>
-              <v-btn type="submit" color="primary">Entrar</v-btn>
-            </v-form>
-          </v-card>
-        </v-col>
-      </v-row>
+          <v-tabs>
+            <v-tab>Entrar</v-tab>
+            <v-tab>Registrar</v-tab>
 
-      <v-row justify="center" class="mt-16">
-        <v-col cols="12" md="6">
-          <v-card class="pa-4">
-            <v-card-title>Registrar</v-card-title>
-            <v-form @submit.prevent="register">
-              <v-text-field
-                v-model="registerEmail"
-                label="E-mail"
-                type="email"
-                required
-                class="mb-4"
-              ></v-text-field>
-              <v-text-field
-                v-model="password2"
-                label="Senha"
-                type="password"
-                required
-                class="mb-4"
-              ></v-text-field>
-              <v-btn type="submit" color="primary">Registrar</v-btn>
-            </v-form>
-          </v-card>
+            <v-tab-item>
+              <v-card class="pa-4">
+                <v-card-title>Entrar</v-card-title>
+                <v-form @submit.prevent="login">
+                  <v-text-field
+                    v-model="loginEmail"
+                    label="E-mail"
+                    type="email"
+                    required
+                    class="mb-4"
+                  ></v-text-field>
+                  <v-text-field
+                    v-model="password"
+                    label="Senha"
+                    type="password"
+                    required
+                    class="mb-4"
+                  ></v-text-field>
+                  <v-btn type="submit" color="primary">Entrar</v-btn>
+                </v-form>
+              </v-card>
+            </v-tab-item>
+
+            <v-tab-item>
+              <v-card class="pa-4">
+                <v-card-title>Registrar</v-card-title>
+                <v-form @submit.prevent="register">
+                  <v-text-field
+                    v-model="registerEmail"
+                    label="E-mail"
+                    type="email"
+                    required
+                    class="mb-4"
+                  ></v-text-field>
+                  <v-text-field
+                    v-model="password2"
+                    label="Senha"
+                    type="password"
+                    required
+                    class="mb-4"
+                  ></v-text-field>
+                  <v-btn type="submit" color="primary">Registrar</v-btn>
+                </v-form>
+              </v-card>
+            </v-tab-item>
+          </v-tabs>
         </v-col>
       </v-row>
     </v-container>
-  </div>
+  </v-app>
 </template>
 
 <script>
