@@ -33,4 +33,8 @@ No geral, dentro da própria documentação do Vue e do Vuetify é bem intuitivo
 Então o código é baseado no que a própria documentação diz respeito, juntamente da sintaxe do vue.
 
 Assim como boa parte dos scripts, até no firebase para a criação do script da datastore criada.  
- 
+
+Após muitas horas de Stackoverflow, copiar códigos já prontos na documentação e entender a lógica por trás disso, fiz o Deploy no firebase como consta nesse link na página.
+
+Os dados são manipulados pelo Firebase, que funciona como um service database e fica mais fácil de testar os end-points no GCLOUD, porém não tive sucesso no Google Cloud em API REST e tive que encontrar o caminho do Express. 
+Prentendo um dia "melhorar" esse projeto, mas de longe esse foi o projeto que abriu meus olhos. Aprendi coisas novas e vi coisas abstratas e conceitos lógicos que aprendemos no começo se tornarem interativas e extremamente objetivas.
